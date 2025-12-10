@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-stylite-dark text-stylite-text;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-stylite-red text-white px-4 py-2 rounded hover:bg-red-700 transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-stylite-light-gray text-stylite-text px-4 py-2 rounded hover:bg-stylite-gray transition-colors;
+  }
+  
+  .card {
+    @apply bg-stylite-gray rounded-lg p-6 shadow-lg;
+  }
+  
+  .nav-link {
+    @apply text-stylite-text hover:text-stylite-red transition-colors;
+  }
+  
+  .post-meta {
+    @apply text-stylite-text-muted text-sm;
+  }
+  
+  /* Enhanced link visibility for blog content */
+  .prose a:not(.nav-link) {
+    @apply text-stylite-red underline decoration-stylite-red underline-offset-2 font-medium;
+    @apply hover:text-red-400 hover:decoration-red-400 hover:decoration-2;
+    @apply transition-colors duration-200;
+  }
+  
+  /* Ensure article content links are highly visible */
+  article a,
+  .article-content a,
+  .post-content a {
+    @apply text-stylite-red underline decoration-stylite-red underline-offset-2 font-medium;
+    @apply hover:text-red-400 hover:decoration-red-400 hover:decoration-2;
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Custom image sizing utilities */
+  .image-small {
+    max-width: 200px;
+    height: auto;
+    margin: 1em auto;
+  }
+
+  .image-medium {
+    max-width: 400px;
+    height: auto;
+    margin: 1em auto;
+  }
+
+  .image-inline {
+    max-width: 150px;
+    height: auto;
+    display: inline-block;
+    margin: 0 0.5em;
+    vertical-align: middle;
+  }
+
+  /* Override default figure margins for small images */
+  .figure-small figure {
+    margin: 0.5em auto;
+    text-align: center;
+  }
+
+  .figure-small img {
+    max-width: 200px;
+    height: auto;
+  }
+
+  .image-caption {
+    text-align: center;
+    font-size: 0.875em;
+    color: #a1a1aa;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+  }
+}

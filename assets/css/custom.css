@@ -1,0 +1,394 @@
+/* Stylite custom overrides: set primary palette to brand red */
+:root {
+  /* Tailwind Red scale mapped to primary */
+  --color-primary-50: 254, 242, 242;   /* #fef2f2 */
+  --color-primary-100: 254, 226, 226;  /* #fee2e2 */
+  --color-primary-200: 254, 202, 202;  /* #fecaca */
+  --color-primary-300: 252, 165, 165;  /* #fca5a5 */
+  --color-primary-400: 248, 113, 113;  /* #f87171 */
+  --color-primary-500: 239, 68, 68;    /* #ef4444 */
+  --color-primary-600: 220, 38, 38;    /* #dc2626 (brand) */
+  --color-primary-700: 185, 28, 28;    /* #b91c1c */
+  --color-primary-800: 153, 27, 27;    /* #991b1b */
+  --color-primary-900: 127, 29, 29;    /* #7f1d1d */
+}
+
+/* Enhanced Bash/Shell Syntax Highlighting for ZFS commands */
+
+/* Override default chroma styles for better bash highlighting */
+.chroma {
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+  border-radius: 0.5rem !important;
+  padding: 1rem !important;
+}
+
+/* Ensure continuous background without line gaps in code blocks */
+.chroma .lntable { border-collapse: collapse !important; }
+.chroma pre { background: transparent !important; margin: 0 !important; }
+/* Remove per-line highlight background to avoid stripes (light and dark) */
+.chroma .hl { background: transparent !important; }
+.dark .chroma .hl { background: transparent !important; }
+/* Ensure table cells/rows don’t introduce their own backgrounds */
+.chroma .lntd,
+.chroma .lntd pre,
+.chroma td,
+.chroma tr,
+.chroma code { background: transparent !important; }
+.chroma hl { background: transparent !important; margin: 0 !important; }
+
+/* Bash commands like zfs, docker, etc */
+.chroma .nb,
+.chroma .nc {
+  color: #10b981 !important;
+  font-weight: 600 !important;
+}
+
+/* Generic names - includes ZFS parameters like sync, primarycache */
+.chroma .n {
+  color: #06b6d4 !important;
+  font-weight: 500 !important;
+}
+
+/* Bash keywords and operators */
+.chroma .k,
+.chroma .o {
+  color: #f87171 !important;
+  font-weight: 500 !important;
+}
+
+/* Variables */
+.chroma .nv,
+.chroma .vg {
+  color: #fbbf24 !important;
+}
+
+/* Strings */
+.chroma .s,
+.chroma .s1,
+.chroma .s2 {
+  color: #fb923c !important;
+}
+
+/* Comments */
+.chroma .c,
+.chroma .c1,
+.chroma .cm {
+  color: #9ca3af !important;
+  font-style: italic !important;
+}
+
+/* Numbers and literals */
+.chroma .m,
+.chroma .mi,
+.chroma .mf {
+  color: #c084fc !important;
+}
+
+/* Line numbers */
+.chroma .lnt,
+.chroma .ln {
+  color: #6b7280 !important;
+}
+
+/* Enhanced Link Visibility for Blog Articles */
+/* Override Blowfish theme link styling */
+.prose a,
+article a,
+.article-content a,
+.post-content a,
+.content a {
+  color: #3b82f6 !important;
+  text-decoration: underline !important;
+  text-decoration-color: #3b82f6 !important;
+  text-underline-offset: 3px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.prose a:hover,
+article a:hover,
+.article-content a:hover,
+.post-content a:hover,
+.content a:hover {
+  color: #60a5fa !important;
+  text-decoration-color: #60a5fa !important;
+  text-decoration-thickness: 2px !important;
+}
+
+/* Ensure navigation links are not affected */
+nav a,
+.nav-link,
+.navigation a,
+.menu a,
+header a,
+.navbar a,
+.sidebar a,
+.toc a,
+.table-of-contents a,
+#TableOfContents a,
+.summary a,
+.article-menu a,
+.page-header a,
+.page-footer a,
+.author-links a,
+.social-links a,
+.breadcrumb a,
+.pagination a,
+.tag a,
+.category a,
+.taxonomy a {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-weight: inherit !important;
+}
+
+/* Specific targeting for blog post content */
+.single .content a,
+.list .content a {
+  color: #3b82f6 !important;
+  text-decoration: underline !important;
+  text-decoration-color: #3b82f6 !important;
+  text-underline-offset: 3px !important;
+  font-weight: 500 !important;
+}
+
+.single .content a:hover,
+.list .content a:hover {
+  color: #60a5fa !important;
+  text-decoration-color: #60a5fa !important;
+  text-decoration-thickness: 2px !important;
+}
+
+/* Even more aggressive targeting for markdown content */
+p a,
+li a,
+blockquote a,
+.markdown a {
+  color: #3b82f6 !important;
+  text-decoration: underline !important;
+  text-decoration-color: #3b82f6 !important;
+  text-underline-offset: 3px !important;
+  font-weight: 500 !important;
+}
+
+p a:hover,
+li a:hover,
+blockquote a:hover,
+.markdown a:hover {
+  color: #60a5fa !important;
+  text-decoration-color: #60a5fa !important;
+  text-decoration-thickness: 2px !important;
+}
+
+/* Stylite red link overrides (non-underlined) */
+/* Keep original rules above intact; override to brand red + no underline */
+.prose a,
+article a,
+.article-content a,
+.post-content a,
+.content a,
+.single .content a,
+.list .content a,
+p a,
+li a,
+blockquote a,
+.markdown a {
+  color: rgb(var(--color-primary-600)) !important; /* #dc2626 */
+  text-decoration: none !important;
+}
+
+.prose a:hover,
+article a:hover,
+.article-content a:hover,
+.post-content a:hover,
+.content a:hover,
+.single .content a:hover,
+.list .content a:hover,
+p a:hover,
+li a:hover,
+blockquote a:hover,
+.markdown a:hover {
+  color: rgb(var(--color-primary-500)) !important; /* #ef4444 */
+  text-decoration: none !important;
+}
+
+/* Footer: revert links to neutral (not red) */
+#site-footer a,
+footer a {
+  color: inherit !important;
+  text-decoration-color: inherit !important;
+}
+#site-footer a:hover,
+footer a:hover {
+  color: inherit !important;
+  text-decoration-color: inherit !important;
+}
+
+/* Custom image sizing utilities */
+.image-small {
+  max-width: 200px;
+  height: auto;
+  margin: 1em auto;
+}
+
+.image-medium {
+  max-width: 400px;
+  height: auto;
+  margin: 1em auto;
+}
+
+.image-inline {
+  max-width: 150px;
+  height: auto;
+  display: inline-block;
+  margin: 0 0.5em;
+  vertical-align: middle;
+}
+
+.image-caption {
+  text-align: center;
+  font-size: 0.875em;
+  color: #a1a1aa;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+/* Improve visibility of collapsible sections in article content only */
+.single .content details summary,
+.article-content details summary,
+.post-content details summary,
+.markdown details summary {
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  font-weight: 600;
+  display: inline-flex; /* small box sized to text */
+  align-items: center; /* align caret and text */
+  padding: 0.375rem 0.625rem; /* compact */
+  border: 1px solid #a1b755; /* match outline */
+  border-radius: 0.5rem;
+  background-color: rgba(17, 17, 220, 0.06);
+}
+
+/* Dark mode – ensure visible background as well */
+.dark .single .content details summary,
+.dark .article-content details summary,
+.dark .post-content details summary,
+.dark .markdown details summary {
+  background-color: rgba(183, 85, 113, 0.12); /* subtle tint matching border */
+  border-color: #b75560; /* keep same accent in dark */
+}
+
+/* When open, expand the box around the entire details and make summary header transparent */
+.single .content details[open],
+.article-content details[open],
+.post-content details[open],
+.markdown details[open] {
+  border: 1px solid #a1b755;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.625rem;
+  background-color: rgba(17, 17, 220, 0.06);
+}
+.dark .single .content details[open],
+.dark .article-content details[open],
+.dark .post-content details[open],
+.dark .markdown details[open] {
+  background-color: rgba(161, 183, 85, 0.12);
+  border-color: #a1b755;
+}
+.single .content details[open] summary,
+.article-content details[open] summary,
+.post-content details[open] summary,
+.markdown details[open] summary {
+  border-color: transparent;
+  background-color: transparent;
+  padding: 0; /* header merges with container */
+}
+/* Add spacing between header and first block when open */
+.single .content details[open] > :not(summary),
+.article-content details[open] > :not(summary),
+.post-content details[open] > :not(summary),
+.markdown details[open] > :not(summary) { margin-top: 0.5rem; }
+.single .content details summary::-webkit-details-marker,
+.article-content details summary::-webkit-details-marker,
+.post-content details summary::-webkit-details-marker,
+.markdown details summary::-webkit-details-marker { display: none; }
+.single .content details summary::before,
+.article-content details summary::before,
+.post-content details summary::before,
+.markdown details summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: #6b7280; /* gray-500 */
+  font-size: 1.1em; /* align visually with text */
+  line-height: 1;
+}
+.single .content details[open] summary::before,
+.article-content details[open] summary::before,
+.post-content details[open] summary::before,
+.markdown details[open] summary::before { content: "▾"; }
+.single .content details:not([open]) summary::after,
+.article-content details:not([open]) summary::after,
+.post-content details:not([open]) summary::after,
+.markdown details:not([open]) summary::after {
+  content: "  Click to Open";
+  margin-left: 1rem;
+  color: #6b7280; /* gray-500 */
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+.single .content details,
+.article-content details,
+.post-content details,
+.markdown details { margin: 0.75rem 0; }
+
+/* Reset TOC (keep theme defaults) */
+#TableOfContents details,
+#TableOfContents summary,
+#TableOfContents details[open],
+#TableOfContents summary::before,
+#TableOfContents summary::after {
+  all: revert;
+}
+
+/* Compact list styling for blog articles */
+.prose ul,
+.prose ol,
+article ul,
+article ol,
+.article-content ul,
+.article-content ol,
+.markdown ul,
+.markdown ol {
+  margin-top: 0.5em !important;
+  margin-bottom: 0.5em !important;
+}
+
+.prose li,
+article li,
+.article-content li,
+.markdown li {
+  margin-top: 0.15em !important;
+  margin-bottom: 0.15em !important;
+  line-height: 1.6 !important;
+}
+
+.prose ul > li,
+article ul > li,
+.article-content ul > li,
+.markdown ul > li {
+  padding-left: 0.25em !important;
+}
+
+/* Keep nested lists compact too */
+.prose li > ul,
+.prose li > ol,
+article li > ul,
+article li > ol,
+.markdown li > ul,
+.markdown li > ol {
+  margin-top: 0.25em !important;
+  margin-bottom: 0.25em !important;
+}

@@ -1,0 +1,7 @@
+# Development configuration. Disable this by running: hugo server -e production
+# https://gohugo.io/quick-reference/glossary/#environment
+
+baseURL = "http://localhost:1313"
+
+# Exclude folders containing large numbers of images
+ignoreFiles = ['content/guides', 'content/users']

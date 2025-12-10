@@ -1,0 +1,57 @@
+services:
+  # Git sync service - monitors GitHub and rebuilds Hugo site
+  gitsync:
+    build:
+      context: ..
+      dockerfile: docker/gitsync.Dockerfile
+    environment:
+      #GIT_REPO_URL: "https://github.com/styliteag/blog.git"
+      # or use ssh url if you have a private repository with ssh key
+      GIT_REPO_URL: "git@github.com:styliteag/blog.git"
+      GIT_BRANCH: "main"
+      SYNC_INTERVAL: 600  # Check every 60 seconds
+      # SSH Configuration for private repositories
+      #USE_SSH: "true"  # Set to true for private repos
+      #SSH_PRIVATE_KEY: |
+      #  -----BEGIN RSA PRIVATE KEY-----
+      #  MIIEp...
+      #  -----END RSA PRIVATE KEY-----
+      # or you can use the base64 encoded key:
+      #SSH_PRIVATE_KEY_BASE64: "LS0...."
+      #SSH_KNOWN_HOSTS: ""  # Optional: known_hosts content
+      # Token-based authentication (alternative to SSH)
+      #USE_TOKEN: "false"  # Set to true for token-based auth
+      #GIT_USERNAME: "" # Your GitHub username
+      #GIT_TOKEN: "" # Your GitHub personal access token
+    volumes:
+      - shared_data:/shared
+      #- ~/.ssh/farm02-ssh-key-for-blog:/root/.ssh/id_rsa:ro
+    restart: unless-stopped
+    
+  # Nginx service - serves the built site
+  web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "82:80"
+    volumes:
+      - shared_data:/shared
+      - web_logs:/var/log/nginx
+    depends_on:
+      - gitsync
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homepage.rule=Host(`blog.stylite.de`)"
+      - "traefik.http.routers.homepage.entrypoints=websecure"
+      - "traefik.http.routers.homepage.tls.certresolver=letsencrypt"
+
+volumes:
+  shared_data:
+  web_logs:

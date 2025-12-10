@@ -1,0 +1,22 @@
+# Backend
+node_modules/
+npm-debug.log*
+.npm/
+
+# Generated/Built directories
+public/
+resources/
+.hugo_build.lock
+
+# Development files
+docker/data
+.claude
+.github
+.vscode
+.DS_Store
+.DS_Store?
+
+# Git files
+.git/
+.gitignore
+.gitmodules

@@ -1,0 +1,22 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+{{- $width := .Get "width" -}}
+{{- $height := .Get "height" -}}
+{{- $caption := .Get "caption" -}}
+
+{{- if $class -}}
+  <img src="{{ $src }}" alt="{{ $alt }}" class="{{ $class }}"
+    {{- if $width }} width="{{ $width }}"{{- end }}
+    {{- if $height }} height="{{ $height }}"{{- end }}
+    loading="lazy" />
+{{- else -}}
+  <img src="{{ $src }}" alt="{{ $alt }}"
+    {{- if $width }} width="{{ $width }}"{{- end }}
+    {{- if $height }} height="{{ $height }}"{{- end }}
+    loading="lazy" />
+{{- end -}}
+
+{{- if $caption }}
+  <p class="image-caption">{{ $caption }}</p>
+{{- end }}

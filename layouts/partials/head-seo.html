@@ -1,0 +1,55 @@
+{{/* JSON-LD Schema Markup for Blog Posts */}}
+{{ if .IsPage }}
+{{ if eq .Section "blog" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ .Title | jsonify }},
+  "description": {{ (.Params.Description | default .Summary | plainify) | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": {{ (index .Params.Authors 0) | default "Stylite AG" | jsonify }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Stylite AG",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.BaseURL }}img/stylite_logo.png"
+    }
+  },
+  "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+  {{ with .Lastmod }}"dateModified": {{ .Format "2006-01-02T15:04:05Z07:00" | jsonify }},{{ end }}
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ .Permalink | jsonify }}
+  },
+  {{ with .Params.Tags }}"keywords": {{ . | jsonify }},{{ end }}
+  {{ $image := .Resources.GetMatch "feature.*" }}
+  {{ if $image }}
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ $image.Permalink }}",
+    "width": {{ $image.Width }},
+    "height": {{ $image.Height }}
+  },
+  {{ end }}
+  "url": {{ .Permalink | jsonify }}
+}
+</script>
+{{ end }}
+{{ end }}
+
+{{/* Custom Keywords meta tag */}}
+{{ with .Params.Keywords }}
+<meta name="keywords" content="{{ delimit . ", " }}" />
+{{ end }}
+
+{{/* Hreflang for multilingual SEO */}}
+{{ range .Site.Languages }}
+{{ if not (eq .Lang $.Site.Language.Lang) }}
+<link rel="alternate" hreflang="{{ .Lang }}" href="{{ $.Permalink | replaceRE "^https://[^/]+" .Params.baseURL }}" />
+{{ end }}
+{{ end }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />

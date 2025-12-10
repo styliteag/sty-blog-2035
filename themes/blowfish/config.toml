@@ -1,0 +1,6 @@
+[module]
+[module.hugoVersion]
+extended = true
+# Align with repo requirement (Hugo Extended v0.121.0+)
+min = "0.121.0"
+# Remove max to avoid false incompatibility warnings on newer Hugo versions

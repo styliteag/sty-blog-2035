@@ -1,0 +1,23 @@
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "Stylite AG"
+
+[params]
+  displayName = "English"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+  # logo = "img/stylite_logo.png"
+  description = "ZFS, security, and Docker solutions"
+
+[params.author]
+  name = "Stylite AG"
+  email = "office@stylite.de"
+  # image = "img/stylite_logo.png"
+  headline = "ZFS, security, and Docker solutions"
+  bio = "Specialists in ZFS storage solutions, security, and Docker containerization for enterprise environments."
+  links = [
+    { github = "https://github.com/styliteag" },
+    { globe = "https://blog.stylite.de" },
+  ]
