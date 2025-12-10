@@ -60,19 +60,10 @@
     {{ $orderByWeight := .Params.orderByWeight | default ($.Site.Params.list.orderByWeight | default false) }}
     {{ $groupByYear := and (not $orderByWeight) $groupByYear }}
 
-    {{/* Filter out unlisted pages */}}
-    {{ $pages := where .Pages "Params.unlisted" "!=" true }}
+    {{ $allBlogPages := where site.RegularPages "Section" "blog" }}
+    {{ $pages := where $allBlogPages "Params.unlisted" "!=" true }}
     
-    {{/* For blog section: if current language is not default ("de") and no pages found, include default language pages */}}
-    {{ if and (eq .Section "blog") (ne .Site.Language.Lang "de") (eq (len $pages) 0) }}
-      {{ range .Site.Sites }}
-        {{ if eq .Language.Lang "de" }}
-          {{ $defaultPages := where .Pages "Section" "blog" }}
-          {{ $defaultPages = where $defaultPages "Params.unlisted" "!=" true }}
-          {{ $pages = $defaultPages }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
+    {{/* The multi-language fallback logic is no longer needed as we are already getting all pages regardless of language */}}
 
     {{ if not $cardView }}
 
