@@ -15,7 +15,7 @@ summaryLength = 30
 hasCJKLanguage = false
 
 buildDrafts = false
-buildFuture = false
+buildFuture = true
 
 enableEmoji = true
 

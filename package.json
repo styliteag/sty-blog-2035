@@ -4,7 +4,8 @@
   "description": "Stylite AG Homepage",
   "scripts": {
     "build": "hugo --minify",
-    "dev": "hugo server --buildDrafts",
+    "build:prod": "hugo --minify --buildFuture",
+    "dev": "hugo server --buildDrafts --buildFuture",
     "build-css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch"
   },
   "devDependencies": {
